@@ -1,3 +1,11 @@
+<style>
+.logo{
+  z-index: -1;
+  position: absolute;
+}
+
+</style>
+
 <ion-header>
   <ion-navbar>
     <ion-title>NosferatuZ</ion-title>
@@ -9,5 +17,8 @@
   <p>
     Esse é o jogo NosferatuZ!
   </p>
-<ion-button ion-button color="primary">teste</ion-button>
+
+<img class="logo" src="{{logo}}"/>
+
+<ion-button ion-button (click)="comecarJogo()">Começar</ion-button>
 </ion-content>
