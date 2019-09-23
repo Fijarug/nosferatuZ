@@ -9,6 +9,7 @@ export class Papel {
   public acao: string;
   public acaoFeita: boolean;
   public descricao: string;
+  public habilitado: boolean;
 
   constructor() {
 

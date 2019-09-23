@@ -10,9 +10,14 @@ import { Papel } from '../../entidades/papel';
 export class Papeis {
 
   public papeis: Array<Papel> = new Array;
+  public papel: Array<Papel> = new Array;
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  public popularLista(){
+    
   }
 
 }

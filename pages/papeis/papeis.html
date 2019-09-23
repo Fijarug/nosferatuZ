@@ -8,17 +8,13 @@
 
 <ion-content padding>
 	<ion-list>
-		<ion-item-sliding *ngFor="let country of s">
-			<ion-card>
-				<ion-card-header>
-					Card Header
-				</ion-card-header>
-
-				<ion-card-content>
-					Lalala
-				</ion-card-content>
-
-			</ion-card>
-		</ion-item-sliding>
-	</ion-list>
+		<ion-item-sliding *ngFor="let country of countries">
+			<ion-item>
+				<ion-card>
+					<img [src]="urlImg" (click)="show()" />
+              <div class="card-title">Amsterdam</div>
+        </ion-card>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
