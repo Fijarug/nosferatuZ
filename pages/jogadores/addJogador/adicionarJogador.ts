@@ -17,15 +17,16 @@ export class AdicionarJogador {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
-    console.log(this.jogadores)
+    if (!this.jogadores) {
+      this.jogadores = new Array;
+    }
   }
 
   public addJogador(): void {
-    if (this.jogador.nome.length > 0) {
+    if (this.jogador.nome && this.jogador.nome.length > 0) {
       this.jogadores.push(this.jogador);
+      this.redirecionar();
     }
-    console.log(this.jogador)
-    // this.redirecionar();
   }
 
   public redirecionar() {

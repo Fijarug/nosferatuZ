@@ -19,7 +19,7 @@ export class JogadoresPage {
   }
 
   public addJogador(): void {
-    this.navCtrl.push(AdicionarJogador);
+    this.navCtrl.push(AdicionarJogador, { jogadores: this.jogadores });
   }
 
 }
