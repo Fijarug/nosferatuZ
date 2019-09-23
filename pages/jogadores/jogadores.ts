@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Jogador } from '../../entidades/jogador';
-import { Configuracao } from '../config/config';
+import { Papeis } from '../papeis/papeis';
 
 import { AdicionarJogador } from './addJogador/adicionarJogador';
 
@@ -14,6 +14,7 @@ export class JogadoresPage {
 
   public jogadores: Array<Jogador> = new Array;
   public jogador: Jogador = new Jogador();
+  public habilitar: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
@@ -23,8 +24,8 @@ export class JogadoresPage {
     this.navCtrl.push(AdicionarJogador, { jogadores: this.jogadores });
   }
 
-  public redirecionarConfig(): void {
-    this.navCtrl.push(Configuracao, { jogadores: this.jogadores });
+  public redirecionarPapeis(): void {
+    this.navCtrl.push(Papeis, { jogadores: this.jogadores });
   }
 
 }

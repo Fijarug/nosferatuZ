@@ -12,7 +12,7 @@
 		</ion-item> -->
 		<ion-item>
 			<ion-label stacked>Nome</ion-label>
-			<ion-input type="text" text-right id="input" [(ngModel)]="jogador.nome" [ngModelOptions]="{standalone: true}"></ion-input>
+			<ion-input type="text" text-right id="input" [(ngModel)]="jogador.nome" [ngModelOptions]="{standalone: true}" required></ion-input>
 		</ion-item>
 		<button ion-button outline color="secondary" round 
     class="login-button" (click)="addJogador()">Adicionar</button>
