@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Jogador } from '../../entidades/jogador';
+import { Configuracao } from '../config/config';
 
 import { AdicionarJogador } from './addJogador/adicionarJogador';
 
@@ -20,6 +21,10 @@ export class JogadoresPage {
 
   public addJogador(): void {
     this.navCtrl.push(AdicionarJogador, { jogadores: this.jogadores });
+  }
+
+  public redirecionarConfig(): void {
+    this.navCtrl.push(Configuracao, { jogadores: this.jogadores });
   }
 
 }

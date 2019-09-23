@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { Configuracao } from '../pages/config/config';
 import { HomePage } from '../pages/home/home';
 import { JogadoresPage } from '../pages/jogadores/jogadores';
 import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador';
@@ -13,7 +13,7 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    Configuracao,
     HomePage,
     JogadoresPage,
     AdicionarJogador
@@ -26,7 +26,7 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    Configuracao,
     HomePage,
     JogadoresPage,
     AdicionarJogador
