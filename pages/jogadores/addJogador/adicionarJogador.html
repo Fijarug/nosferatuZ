@@ -5,17 +5,17 @@
 </ion-header>
 
 <ion-content padding>
-	<form padding [formGroup]="loginForm" (submit)="login()" novalidate>
+	<form padding novalidate>
+		<!-- <ion-item>
+			<ion-input value="Foto: ">
+			</ion-input>
+		</ion-item> -->
 		<ion-item>
-			<ion-input [(ngModel)]="email" formControlName="email" type="text" placeholder="E-mail" clearInput clearOnEdit="false">
+			<ion-input value="Nome: ">
 			</ion-input>
 		</ion-item>
-		<h6 *ngIf="errorEmail" class="error"> {{messageEmail}}</h6>
-		<ion-item>
-			<ion-input [(ngModel)]="password" formControlName="password" type="password" placeholder="Senha" clearInput clearOnEdit="false">
-			</ion-input>
-		</ion-item>
-		<h6 *ngIf="errorPassword" class="error"> {{messagePassword}}</h6>
-		<button ion-button block outline color="secondary" class="login-button">Login</button>
+		<button ion-button outline color="secondary" round class="login-button">Adicionar</button>
+
+    <button ion-button outline color="danger" round class="login-button">Cancelar</button>
   </form>
 </ion-content>

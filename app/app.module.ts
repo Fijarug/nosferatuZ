@@ -15,7 +15,8 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
     AboutPage,
     ContactPage,
     HomePage,
-    JogadoresPage
+    JogadoresPage,
+    AdicionarJogador
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,8 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
     AboutPage,
     ContactPage,
     HomePage,
-    JogadoresPage
+    JogadoresPage,
+    AdicionarJogador
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}

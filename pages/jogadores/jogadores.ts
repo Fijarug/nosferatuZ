@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AdicionarJogador } from '/addJogador/adicionarJogador';
+import { AdicionarJogador } from './addJogador/adicionarJogador';
 
 @Component({
   selector: 'page-jogadores',
