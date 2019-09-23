@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AboutPage } from '../about/about';
+import { JogadoresPage } from '../jogadores/jogadores';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +15,7 @@ public logo = "https://github.com/Fijarug/nosferatuZ/blob/master/src/img/logo.pn
   }
 
  public comecarJogo(): void{
-    this.navCtrl.push(AboutPage);
+    this.navCtrl.push(JogadoresPage);
   }
 
 }
