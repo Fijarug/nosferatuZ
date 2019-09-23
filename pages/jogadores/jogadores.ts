@@ -15,14 +15,7 @@ export class JogadoresPage {
   public jogador: Jogador = new Jogador();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.jogador = navParams.get('jogador');
-    this.adicionarNaLista();
-  }
-
-  public adicionarNaLista() {
-    if (this.jogador) {
-      this.jogadores.push(this.jogador);
-    }
+    this.jogadores = navParams.get('jogadores');
   }
 
   public addJogador(): void {
