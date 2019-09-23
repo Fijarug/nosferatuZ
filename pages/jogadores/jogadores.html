@@ -10,4 +10,14 @@
 	<ion-fab right>
 		<button ion-fab mini (click)="addJogador()">+</button>
  </ion-fab>
+
+ <ion-row>
+    <ion-col col-12>
+      <ion-list id="itens">
+        <ion-item *ngFor = "let item of jogadores">
+          <h5>{{ item.nome }}</h5>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>

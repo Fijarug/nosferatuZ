@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { Jogador } from '../../entidades/jogador';
+
 import { AdicionarJogador } from './addJogador/adicionarJogador';
 
 @Component({
@@ -8,8 +11,18 @@ import { AdicionarJogador } from './addJogador/adicionarJogador';
 })
 export class JogadoresPage {
 
-  constructor(public navCtrl: NavController) {
+  public jogadores: Array<Jogador> = new Array;
+  public jogador: Jogador = new Jogador();
 
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.jogador = navParams.get('jogador');
+    this.adicionarNaLista();
+  }
+
+  public adicionarNaLista() {
+    if (this.jogador) {
+      this.jogadores.push(this.jogador);
+    }
   }
 
   public addJogador(): void {
