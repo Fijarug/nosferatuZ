@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
+import { Papeis } from '../pages/papeis/papeis';
 import { Configuracao } from '../pages/config/config';
 import { HomePage } from '../pages/home/home';
 import { JogadoresPage } from '../pages/jogadores/jogadores';
@@ -12,7 +12,7 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    Papeis,
     Configuracao,
     HomePage,
     JogadoresPage,
@@ -25,7 +25,7 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    Papeis,
     Configuracao,
     HomePage,
     JogadoresPage,
