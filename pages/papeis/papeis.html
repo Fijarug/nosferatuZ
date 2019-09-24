@@ -20,7 +20,7 @@
 
 <ion-content padding>
 
-	<ion-button ion-button (click)="redirecionarPapeis()">
+	<ion-button ion-button (click)="redirecionarConfig()">
 		Iniciar
 	</ion-button>
 
@@ -31,7 +31,7 @@
 				<ion-card>
 					<div class="card-title">
 						{{p.nome}} <br/>
-							<input type="checkbox">
+							<input type="checkbox" value="{{p.habilitado}}">
             <br/>
             Time: {{p.time}}<br/>
             Força: {{p.level}}
