@@ -11,9 +11,13 @@
 		<ion-item-sliding *ngFor="let p of papeis">
 			<ion-item>
 				<ion-card>
-          <ion-card-content>
-					  {{p.nome}}
-          </ion-card-content>
+					<div class="card-title">{{p.nome}}
+						<br/>
+							{{p.descricao}}
+              <br/>
+                  <i class="flag-icon flag-icon-gr"></i>
+
+					</div>
 				</ion-card>
 			</ion-item>
 		</ion-item-sliding>
