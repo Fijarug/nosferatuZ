@@ -8,6 +8,7 @@ import { Configuracao } from '../pages/config/config';
 import { HomePage } from '../pages/home/home';
 import { JogadoresPage } from '../pages/jogadores/jogadores';
 import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador';
+import { Jogando } from '../pages/jogando/jogando';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
     Configuracao,
     HomePage,
     JogadoresPage,
-    AdicionarJogador
+    AdicionarJogador,
+    Jogando
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { AdicionarJogador } from '../pages/jogadores/addJogador/adicionarJogador
     Configuracao,
     HomePage,
     JogadoresPage,
-    AdicionarJogador
+    AdicionarJogador,
+    Jogando
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler}
