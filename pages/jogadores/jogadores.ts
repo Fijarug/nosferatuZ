@@ -14,14 +14,21 @@ export class JogadoresPage {
 
   public jogadores: Array<Jogador> = new Array;
   public jogador: Jogador = new Jogador();
-  public habilitar: boolean;
+  public habilitar: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
+    if (this.jogadores && this.jogadores.length >= 4) {
+      this.habilitar = true;
+    }
   }
 
   public addJogador(): void {
     this.navCtrl.push(AdicionarJogador, { jogadores: this.jogadores });
+  }
+
+  public editJogador(j: Jogador): void {
+    this.navCtrl.push(AdicionarJogador, { jogadores: this.jogadores, jogador: j });
   }
 
   public redirecionarPapeis(): void {

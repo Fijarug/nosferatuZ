@@ -1,6 +1,12 @@
+<style>
+	ion-item {
+		width: 300px;
+	}
+</style>
+
 <ion-header>
-  <ion-navbar color="danger">
-  	<ion-title>NosferatuZ</ion-title>
+	<ion-navbar color="danger">
+		<ion-title>NosferatuZ</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -13,14 +19,19 @@
  <ion-row>
     <ion-col col-12>
       <ion-list id="itens">
-        <ion-item *ngFor = "let item of jogadores">
-          <h5>{{ item.nome }}</h5>
+        <ion-item *ngFor = "let j of jogadores">
+          <h5>
+            <button ion-button round (click)="editJogador(j)">
+              <ion-icon name="create"></ion-icon>
+            </button>
+            {{ j.nome }}
+          </h5>
         </ion-item>
       </ion-list>
     </ion-col>
   </ion-row>
 
-  <ion-button ion-button (click)="redirecionarPapeis()">
+  <ion-button ion-button (click)="redirecionarPapeis()" *ngIf="habilitar == true">
     Configurar Papéis
   </ion-button>
 </ion-content>
