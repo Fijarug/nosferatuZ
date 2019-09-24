@@ -8,9 +8,10 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      <ion-icon name="ionic" item-right></ion-icon>
-      @ionicframework
-    </ion-item>
+    <ion-item *ngFor="let p of papeis" style="width:50%;">
+			<ion-col>
+        {{p.nome}}
+			</ion-col>
+		</ion-item>
   </ion-list>
 </ion-content>
