@@ -18,9 +18,9 @@ export class JogadoresPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
-    if (this.jogadores && this.jogadores.length >= 4) {
+    // if (this.jogadores && this.jogadores.length >= 4) {
       this.habilitar = true;
-    }
+    // }
   }
 
   public addJogador(): void {
