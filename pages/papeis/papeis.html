@@ -1,3 +1,15 @@
+<style>
+	ion-card {
+		width: 130px;
+		height: 90px;
+		position: relative;
+		text-align: center;
+		padding: 0px;
+		margin: 0px;
+		border: solid 1px #000;
+	}
+</style>
+
 <ion-header>
 	<ion-navbar>
 		<ion-title>
@@ -7,19 +19,23 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-list>
-		<ion-item-sliding *ngFor="let p of papeis">
-			<ion-item>
-				<ion-card>
-					<div class="card-title">{{p.nome}}
-						<br/>
-							{{p.descricao}}
-              <br/>
-                  <i class="flag-icon flag-icon-gr"></i>
 
-					</div>
-				</ion-card>
-			</ion-item>
-		</ion-item-sliding>
-	</ion-list>
+	<ion-button ion-button (click)="redirecionarPapeis()">
+		Iniciar
+	</ion-button>
+
+	<h3>Selecione quais papéis serão habilitados para o jogo.</h3>
+	<ion-row>
+		<ion-item *ngFor="let p of papeis" style="width:50%;">
+			<ion-col style="padding: 0px; margin: 0px;">
+				<ion-card>
+					<div class="card-title">
+						{{p.nome}} <br/>
+							{{p.descricao}}
+							<input style="margin-left: 50%; margin-right: 0px;" type="checkbox">
+          </div>
+        </ion-card>
+			</ion-col>
+		</ion-item>
+	</ion-row>
 </ion-content>
