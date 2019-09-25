@@ -94,8 +94,8 @@ export class Configuracao {
         } else if (papel[sorteado] === this.Bom3) {
           resultados.set(this.Bom3, resultados.get(this.Bom3) + 1)
         }
+        totalSorteado = totalSorteado + 1;
       }
-      totalSorteado = totalSorteado + 1;
     }
     console.log(resultados);
   }
