@@ -11,6 +11,7 @@ export class Papel {
   public acaoFeita: boolean;
   public descricao: string;
   public habilitado: boolean;
+  public probabilidade: number;
 
   constructor() {
 
