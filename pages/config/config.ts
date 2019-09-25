@@ -81,23 +81,19 @@ export class Configuracao {
 
     console.log(this.jogadores.length);
     let totalSorteado = 0;
-    while (totalSorteado <= this.jogadores.length) {
-      totalSorteado = 0;
-      for (var i = 0; i < this.jogadores.length; i++) {
-        let sorteado = Math.floor((Math.random() * papel.length - 1) + 1);
-        if (papel[sorteado] === this.Mal) {
-          resultados.set(this.Mal, resultados.get(this.Mal) + 1)
-        } else if (papel[sorteado] === this.Bom1) {
-          resultados.set(this.Bom1, resultados.get(this.Bom1) + 1)
-        } else if (papel[sorteado] === this.Bom2) {
-          resultados.set(this.Bom2, resultados.get(this.Bom2) + 1)
-        } else if (papel[sorteado] === this.Bom3) {
-          resultados.set(this.Bom3, resultados.get(this.Bom3) + 1)
-        }
-        totalSorteado = totalSorteado + 1;
+    for (var i = 0; i < this.jogadores.length; i++) {
+      let sorteado = Math.floor((Math.random() * papel.length - 1) + 1);
+      if (papel[sorteado] === this.Mal) {
+        resultados.set(this.Mal, resultados.get(this.Mal) + 1)
+      } else if (papel[sorteado] === this.Bom1) {
+        resultados.set(this.Bom1, resultados.get(this.Bom1) + 1)
+      } else if (papel[sorteado] === this.Bom2) {
+        resultados.set(this.Bom2, resultados.get(this.Bom2) + 1)
+      } else if (papel[sorteado] === this.Bom3) {
+        resultados.set(this.Bom3, resultados.get(this.Bom3) + 1)
       }
     }
-    console.log(resultados);
+  console.log(resultados);
   }
 
 }
