@@ -61,6 +61,11 @@ export class Configuracao {
   public sortear() {
     let papel = [];
     var resultados = new Map();
+    resultados.set(this.Mal, 0);
+    resultados.set(this.Bom1, 0);
+    resultados.set(this.Bom2, 0);
+    resultados.set(this.Bom3, 0);
+    resultados.set(this.e, 0);
 
     for (i = 1; i <= 100; i++) {
       if (this.Mal.probabilidade >= i)
@@ -72,27 +77,26 @@ export class Configuracao {
       if (this.Bom3.probabilidade >= i)
         papel.push(this.Bom3);
     }
-    
 
+
+    console.log(this.jogadores.length);
     let totalSorteado = 0;
     while (totalSorteado <= this.jogadores.length) {
       totalSorteado = 0;
       for (var i = 0; i < this.jogadores.length; i++) {
         let sorteado = Math.floor((Math.random() * papel.length - 1) + 1);
-        if (papel[sorteado] === this.Mal)
+        if (papel[sorteado] === this.Mal) {
           resultados.set(this.Mal, resultados.get(this.Mal) + 1)
-        if (papel[sorteado] === this.Bom1)
+        } else if (papel[sorteado] === this.Bom1) {
           resultados.set(this.Bom1, resultados.get(this.Bom1) + 1)
-        if (papel[sorteado] === this.Bom2)
+        } else if (papel[sorteado] === this.Bom2) {
           resultados.set(this.Bom2, resultados.get(this.Bom2) + 1)
-        if (papel[sorteado] === this.Bom3)
+        } else if (papel[sorteado] === this.Bom3) {
           resultados.set(this.Bom3, resultados.get(this.Bom3) + 1)
+        }
       }
-      resultados.forEach(function (valor, chave) {
-        totalSorteado += valor;
-      });
+      totalSorteado = totalSorteado + 1;
     }
-    console.log(papel);
     console.log(resultados);
   }
 
