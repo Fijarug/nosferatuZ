@@ -8,17 +8,10 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let p of papeis" style="width:50%;">
-			<ion-col>
-        {{p.nome}}
-			</ion-col>
-		</ion-item>
-  </ion-list>
-
-  <ion-list>
     <ion-item *ngFor="let p of jogadores" style="width:50%;">
 			<ion-col>
-        {{p.nome}}
+        {{p.nome}}<br/>
+        <!-- {{p.papel.nome}} -->
 			</ion-col>
 		</ion-item>
   </ion-list>

@@ -18,9 +18,28 @@ export class JogadoresPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
+
+    this.adicionar();
+
     // if (this.jogadores && this.jogadores.length >= 4) {
-      this.habilitar = true;
+    this.habilitar = true;
     // }
+  }
+
+  public adicionar() {
+    this.jogadores = new Array;
+    this.jogador = new Jogador();
+    this.jogador.nome = "1";
+    this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "2";
+    this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "3";
+    this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "4";
+    this.jogadores.push(this.jogador);
   }
 
   public addJogador(): void {
