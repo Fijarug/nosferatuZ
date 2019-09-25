@@ -31,7 +31,7 @@
 				<ion-card>
 					<div class="card-title">
 						{{p.nome}} <br/>
-							<input type="checkbox" value="{{p.habilitado}}">
+							<input type="checkbox" (click)="addPapel(p)">
             <br/>
             Time: {{p.time}}<br/>
             Força: {{p.level}}

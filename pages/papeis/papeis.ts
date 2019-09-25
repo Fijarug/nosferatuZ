@@ -22,6 +22,7 @@ export class Papeis {
   }
 
   public addPapel(p: Papel) {
+    p.habilitado = !p.habilitado;
     if (p.habilitado) {
       this.papeisAdicionados.push(p);
     } else {
@@ -39,7 +40,7 @@ export class Papeis {
   }
 
   public redirecionarConfig(): void {
-    this.navCtrl.push(Configuracao, { jogadores: this.jogadores, papeis: this.papeis });
+    this.navCtrl.push(Configuracao, { jogadores: this.jogadores, papeis: this.papeisAdicionados });
   }
 
   public popularLista() {
