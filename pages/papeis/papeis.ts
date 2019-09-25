@@ -14,10 +14,28 @@ export class Papeis {
   public papeis: Array<Papel> = new Array;
   public papel: Papel = new Papel;
   public jogadores: Array<Jogador> = new Array;
+  public papeisAdicionados: Array<Papel> = new Array;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.popularLista();
     this.jogadores = navParams.get('jogadores');
+  }
+
+  public addPapel(p: Papel) {
+    if (p.habilitado) {
+      this.papeisAdicionados.push(p);
+    } else {
+      if (this.papeisAdicionados) {
+        this.removerPapel(p);
+      }
+    }
+  }
+
+  private removerPapel(p: Papel) {
+    const index: number = this.papeisAdicionados.indexOf(p);
+    if (index !== -1) {
+      this.papeisAdicionados.splice(index, 1);
+    }
   }
 
   public redirecionarConfig(): void {
