@@ -22,7 +22,6 @@ export class Configuracao {
   public papeisPorTimeELevel = new Map();
   //quais papeies estao no jogo por time
   public papeisSeparadosPorTimeLevel = new Map();
-  public sortearPapeis = new Array;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
@@ -34,15 +33,11 @@ export class Configuracao {
     this.definirQtdePorTime();
     this.sortear();
     this.balancear();
-
-    console.log(this.papeisPorTimeELevel)
-    // console.log(this.papeisSeparadosPorTimeLevel)
-    this.teste();
+    this.sortearPapeis();
   }
 
-  public teste() {
+  public sortearPapeis() {
     var papeisParaSortear = new Array;
-
     this.papeisPorTimeELevel.forEach((value: number, key: any) => {
       key.quantidade = value;
       if (key.quantidade != 0) {
@@ -52,11 +47,18 @@ export class Configuracao {
       }
     });
 
-    var i = Math.floor((Math.random() * this.jogadores.length - 1) + 1)
-    if (!this.jogadores[i].papel) {
-      console.log(papeisParaSortear[i])
-      console.log(this.papeisPorTimeELevel[papeisParaSortear[i]])
-      // this.jogadores[i].papel = this.papeisPorTimeELevel[papeisParaSortear[i]].papel;
+    for (var i = 0; i <= papeisParaSortear.length; i++) {
+      var randomJogador = Math.floor((Math.random() * this.jogadores.length - 1) + 1)
+      if (!this.jogadores[randomJogador].papel) {
+        this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
+          if (papeisParaSortear[randomJogador] == key) {
+            //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
+            var x = Math.floor((Math.random() * value - 1) + 1)
+            this.jogadores[randomJogador].papel = value[0];
+            papeisParaSortear.splice[randomJogador];
+          }
+        })
+      }
     }
   }
 
