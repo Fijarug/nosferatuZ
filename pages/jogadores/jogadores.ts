@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Jogador } from '../../entidades/jogador';
+import { Papel } from '../../entidades/papel';
+
 import { Papeis } from '../papeis/papeis';
 
 import { AdicionarJogador } from './addJogador/adicionarJogador';
@@ -30,15 +32,19 @@ export class JogadoresPage {
     this.jogadores = new Array;
     this.jogador = new Jogador();
     this.jogador.nome = "1";
+    this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
     this.jogador.nome = "2";
+    this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
     this.jogador.nome = "3";
+    this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
     this.jogador.nome = "4";
+    this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
   }
 

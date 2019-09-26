@@ -26,9 +26,6 @@ export class Configuracao {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
     this.papeis = navParams.get('papeis');
-    if (!this.jogadores) {
-      this.jogadores = new Array;
-    }
     this.instanciar();
     this.definirQtdePorTime();
     this.sortear();
@@ -68,6 +65,12 @@ export class Configuracao {
     this.Bom2 = { time: 'Bom', level: 2, probabilidade: (0.35 * 100), habilitado: true, quantidade: 0 };
     this.Bom3 = { time: 'Bom', level: 3, probabilidade: (0.20 * 100), habilitado: true, quantidade: 0 };
     this.e = { time: 'Assassino', level: 1, probabilidade: 0, habilitado: false };
+
+    for (var i = 0; i <= this.jogadores.length; i++) {
+      if (!this.jogadores[i].papel.time) {
+        this.jogadores[i].papel = new Papel;
+      }
+    }
   }
 
   public definirQtdePorTime() {
@@ -121,10 +124,10 @@ export class Configuracao {
         this.papeisPorTimeELevel.set(this.Bom3, this.papeisPorTimeELevel.get(this.Bom3) + 1)
       }
     }
-    // console.log("Mal: " + this.papeisPorTimeELevel.get(this.Mal));
-    // console.log("Bom1: " + this.papeisPorTimeELevel.get(this.Bom1));
-    // console.log("Bom2: " + this.papeisPorTimeELevel.get(this.Bom2));
-    // console.log("Bom3: " + this.papeisPorTimeELevel.get(this.Bom3));
+    console.log("Mal: " + this.papeisPorTimeELevel.get(this.Mal));
+    console.log("Bom1: " + this.papeisPorTimeELevel.get(this.Bom1));
+    console.log("Bom2: " + this.papeisPorTimeELevel.get(this.Bom2));
+    console.log("Bom3: " + this.papeisPorTimeELevel.get(this.Bom3));
   }
 
   public balancear() {
