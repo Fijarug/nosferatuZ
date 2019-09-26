@@ -46,7 +46,7 @@ export class Configuracao {
 
     for (var i = 0; i <= papeisParaSortear.length; i++) {
       var randomJogador = Math.floor((Math.random() * this.jogadores.length - 1) + 1)
-      if (!this.jogadores[randomJogador].papel) {
+      if (!this.jogadores[randomJogador].papel.nome) {
         this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
           if (papeisParaSortear[randomJogador] == key) {
             //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
@@ -67,7 +67,7 @@ export class Configuracao {
     this.e = { time: 'Assassino', level: 1, probabilidade: 0, habilitado: false };
 
     for (var i = 0; i <= this.jogadores.length; i++) {
-      if (!this.jogadores[i].papel.time) {
+      if (this.jogadores[i].papel.nome) {
         this.jogadores[i].papel = new Papel;
       }
     }
