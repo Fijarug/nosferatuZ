@@ -12,15 +12,17 @@ export class Configuracao {
 
   public jogadores: Array<Jogador> = new Array;
   public papeis: Array<Papel> = new Array;
-  public papeisTimeLevel = new Map();
-  public sortearPapeis = new Array;
 
   public Mal: any;
   public Bom1: any;
   public Bom2: any;
   public Bom3: any;
   public e: any;
+
   public papeisPorTimeELevel = new Map();
+  //quais papeies estao no jogo por time
+  public papeisSeparadosPorTimeLevel = new Map();
+  public sortearPapeis = new Array;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get('jogadores');
@@ -33,34 +35,54 @@ export class Configuracao {
     this.sortear();
     this.balancear();
 
-    //map to array
     console.log(this.papeisPorTimeELevel)
-    console.log(this.papeisTimeLevel)
+    // console.log(this.papeisSeparadosPorTimeLevel)
+    this.teste();
+  }
+
+  public teste() {
+    var papeisParaSortear = new Array;
+
+    this.papeisPorTimeELevel.forEach((value: number, key: any) => {
+      key.quantidade = value;
+      if (key.quantidade != 0) {
+        for (var i = 0; i < key.quantidade; i++) {
+          papeisParaSortear.push(key.time + key.level);
+        }
+      }
+    });
+
+    var i = Math.floor((Math.random() * this.jogadores.length - 1) + 1)
+    if (!this.jogadores[i].papel) {
+      console.log(papeisParaSortear[i])
+      console.log(this.papeisPorTimeELevel[papeisParaSortear[i]])
+      // this.jogadores[i].papel = this.papeisPorTimeELevel[papeisParaSortear[i]].papel;
+    }
   }
 
   public instanciar() {
-    this.Mal = { time: 'Mal', level: 1, probabilidade: (0.45 * 100), disponivel: true, quantidade: 0 };
-    this.Bom1 = { time: 'Bom', level: 1, probabilidade: (0.50 * 100), disponivel: true, quantidade: 0 };
-    this.Bom2 = { time: 'Bom', level: 2, probabilidade: (0.35 * 100), disponivel: true, quantidade: 0 };
-    this.Bom3 = { time: 'Bom', level: 3, probabilidade: (0.20 * 100), disponivel: true, quantidade: 0 };
-    this.e = { time: 'Assassino', level: 1, probabilidade: 0, disponivel: false };
+    this.Mal = { time: 'Mal', level: 1, probabilidade: (0.45 * 100), habilitado: true, quantidade: 0 };
+    this.Bom1 = { time: 'Bom', level: 1, probabilidade: (0.50 * 100), habilitado: true, quantidade: 0 };
+    this.Bom2 = { time: 'Bom', level: 2, probabilidade: (0.35 * 100), habilitado: true, quantidade: 0 };
+    this.Bom3 = { time: 'Bom', level: 3, probabilidade: (0.20 * 100), habilitado: true, quantidade: 0 };
+    this.e = { time: 'Assassino', level: 1, probabilidade: 0, habilitado: false };
   }
 
   public definirQtdePorTime() {
     var lista: Array<Papel> = new Array;
     for (var i = 0; i < this.papeis.length; i++) {
-      this.papeisTimeLevel.set(this.papeis[i].time + this.papeis[i].level, new Array);
+      this.papeisSeparadosPorTimeLevel.set(this.papeis[i].time + this.papeis[i].level, new Array);
     }
 
     for (var i = 0; i < this.papeis.length; i++) {
       if (this.papeis[i].time === this.Mal.time) {
-        this.papeisTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
+        this.papeisSeparadosPorTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
       } else if (this.papeis[i].time === this.Bom1.time && this.papeis[i].level === this.Bom1.level) {
-        this.papeisTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
+        this.papeisSeparadosPorTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
       } else if (this.papeis[i].time === this.Bom2.time && this.papeis[i].level === this.Bom2.level) {
-        this.papeisTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
+        this.papeisSeparadosPorTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
       } else if (this.papeis[i].time === this.Bom3.time && this.papeis[i].level === this.Bom3.level) {
-        this.papeisTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
+        this.papeisSeparadosPorTimeLevel.get(this.papeis[i].time + this.papeis[i].level).push(this.papeis[i]);
       }
     }
   }
@@ -97,10 +119,10 @@ export class Configuracao {
         this.papeisPorTimeELevel.set(this.Bom3, this.papeisPorTimeELevel.get(this.Bom3) + 1)
       }
     }
-    console.log("Mal: " + this.papeisPorTimeELevel.get(this.Mal));
-    console.log("Bom1: " + this.papeisPorTimeELevel.get(this.Bom1));
-    console.log("Bom2: " + this.papeisPorTimeELevel.get(this.Bom2));
-    console.log("Bom3: " + this.papeisPorTimeELevel.get(this.Bom3));
+    // console.log("Mal: " + this.papeisPorTimeELevel.get(this.Mal));
+    // console.log("Bom1: " + this.papeisPorTimeELevel.get(this.Bom1));
+    // console.log("Bom2: " + this.papeisPorTimeELevel.get(this.Bom2));
+    // console.log("Bom3: " + this.papeisPorTimeELevel.get(this.Bom3));
   }
 
   public balancear() {
