@@ -43,20 +43,42 @@ export class Configuracao {
       }
     });
 
-    // for (var i = 0; i <= papeisParaSortear.length; i++) {
-    //   var randomJogador = Math.floor((Math.random() * this.jogadores.length - 1) + 1)
-    //   if (!this.jogadores[randomJogador].papel.nome) {
-    //     this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
-    //       if (papeisParaSortear[randomJogador] == key) {
-    //         //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
-    //         var x = Math.floor((Math.random() * value - 1) + 1)
-    //         this.jogadores[randomJogador].papel = value[0];
-    //         papeisParaSortear.splice[randomJogador];
-    //         console.log(this.jogadores[randomJogador])
-    //       }
-    //     })
-    //   }
-    // }
+    // this.jogadores = this.misturar(this.jogadores);
+
+    let teste = [];
+    for (var i = 0; i < this.jogadores.length; i++) {
+      teste.push(i);
+    }
+    teste = this.misturar(teste);
+    
+    for (var i = 0; i < papeisParaSortear.length; i++) {
+      // var randomJogador = Math.floor(Math.random() * this.jogadores.length - 1 + 1);
+      if (!this.jogadores[teste[i]].papel.nome) {
+        this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
+          if (papeisParaSortear[teste[i]] == key) {
+            //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
+            var x = Math.floor(Math.random() * value - 1 + 1);
+            this.jogadores[teste[i]].papel = value[0];
+            papeisParaSortear.splice[teste[i]];
+          }
+        });
+      }
+    }
+  }
+
+  public misturar(array) {
+    var atualIndex = array.length,
+      valorTemp,
+      novoIndex;
+    while (0 !== atualIndex) {
+      novoIndex = Math.floor(Math.random() * atualIndex);
+      atualIndex -= 1;
+
+      valorTemp = array[atualIndex];
+      array[atualIndex] = array[novoIndex];
+      array[novoIndex] = valorTemp;
+    }
+    return array;
   }
 
   public instanciar() {
@@ -95,8 +117,11 @@ export class Configuracao {
       habilitado: false
     };
 
-    for (var i = 0; i <= this.jogadores.length; i++) {
-      this.jogadores[i].papel = new Papel();
+    for (var i = 0; i < this.jogadores.length; i++) {
+      if (this.jogadores[i].papel) {
+        this.jogadores[i].papel = null;
+        this.jogadores[i].papel = new Papel();
+      }
     }
   }
 
@@ -179,10 +204,10 @@ export class Configuracao {
         );
       }
     }
-    console.log("Mal: " + this.papeisPorTimeELevel.get(this.Mal));
-    console.log("Bom1: " + this.papeisPorTimeELevel.get(this.Bom1));
-    console.log("Bom2: " + this.papeisPorTimeELevel.get(this.Bom2));
-    console.log("Bom3: " + this.papeisPorTimeELevel.get(this.Bom3));
+    // console.log("Mal: " + this.papeisPorTimeELevel.get(this.Mal));
+    // console.log("Bom1: " + this.papeisPorTimeELevel.get(this.Bom1));
+    // console.log("Bom2: " + this.papeisPorTimeELevel.get(this.Bom2));
+    // console.log("Bom3: " + this.papeisPorTimeELevel.get(this.Bom3));
   }
 
   public balancear() {
