@@ -48,19 +48,17 @@ export class Configuracao {
       randomJogador.push(i);
     }
     randomJogador = this.misturar(randomJogador);
+    papeisParaSortear = this.misturar(papeisParaSortear);
 
-    //map to array e misturar
-    var arr = Array.from(this.papeisSeparadosPorTimeLevel);
-    arr = this.misturar(arr);
 
     for (var i = 0; i < papeisParaSortear.length; i++) {
       if (!this.jogadores[randomJogador[i]].papel.nome) {
         this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
           if (papeisParaSortear[randomJogador[i]] == key) {
             //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
-            var x = Math.floor(Math.random() * value - 1 + 1);
-            this.jogadores[randomJogador[i]].papel = value[0];
-            papeisParaSortear.splice[randomJogador[i]];
+            var x = Math.floor(Math.random() * Array.from(value).length - 1 + 1);
+            this.jogadores[randomJogador[i]].papel = value[x];
+            papeisParaSortear.splice[0, randomJogador[i]];
           }
         });
       }
@@ -212,6 +210,7 @@ export class Configuracao {
   }
 
   public balancear() {
+    console.log(this.papeisPorTimeELevel.get(this.Mal))
     for (var i = 0; i < 100; i++) {
       if (
         this.papeisPorTimeELevel.get(this.Mal) <
