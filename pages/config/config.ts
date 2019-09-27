@@ -50,15 +50,16 @@ export class Configuracao {
     randomJogador = this.misturar(randomJogador);
     papeisParaSortear = this.misturar(papeisParaSortear);
 
-
     for (var i = 0; i < papeisParaSortear.length; i++) {
       if (!this.jogadores[randomJogador[i]].papel.nome) {
         this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
           if (papeisParaSortear[randomJogador[i]] == key) {
             //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
-            var x = Math.floor(Math.random() * Array.from(value).length - 1 + 1);
+            var x = Math.floor(
+              Math.random() * Array.from(value).length - 1 + 1
+            );
             this.jogadores[randomJogador[i]].papel = value[x];
-            papeisParaSortear.splice[0, randomJogador[i]];
+            papeisParaSortear.splice[randomJogador[i]];
           }
         });
       }
@@ -210,7 +211,6 @@ export class Configuracao {
   }
 
   public balancear() {
-    console.log(this.papeisPorTimeELevel.get(this.Mal))
     for (var i = 0; i < 100; i++) {
       if (
         this.papeisPorTimeELevel.get(this.Mal) <
@@ -230,7 +230,13 @@ export class Configuracao {
         console.log("Refazendo: nenhum vampiro");
         console.log("------------------------------------");
         this.sortear();
-        // } else if (totalizador(maiores) == 0 && totalizador(zerados) == 0) {
+      } else if (
+        this.papeisPorTimeELevel.get(this.Mal) <
+        this.jogadores.length / 4
+      ) {
+        console.log("Refazendo: time vampiro mto fraco");
+        console.log("------------------------------------");
+        this.sortear();
       } else {
         break;
       }
