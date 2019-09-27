@@ -43,24 +43,22 @@ export class Configuracao {
       }
     });
 
-    // this.jogadores = this.misturar(this.jogadores);
 
-    let teste = [];
+    let randomJogador = [];
     for (var i = 0; i < this.jogadores.length; i++) {
-      teste.push(i);
+      randomJogador.push(i);
     }
-    teste = this.misturar(teste);
+    randomJogador = this.misturar(randomJogador);
     
     for (var i = 0; i < papeisParaSortear.length; i++) {
-      // var randomJogador = Math.floor(Math.random() * this.jogadores.length - 1 + 1);
-      if (!this.jogadores[teste[i]].papel.nome) {
+      if (!this.jogadores[randomJogador[i]].papel.nome) {
         this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
           console.log("Key: " + key)
-          if (papeisParaSortear[teste[i]] == key) {
+          if (papeisParaSortear[randomJogador[i]] == key) {
             //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
             var x = Math.floor(Math.random() * value - 1 + 1);
-            this.jogadores[teste[i]].papel = value[0];
-            papeisParaSortear.splice[teste[i]];
+            this.jogadores[randomJogador[i]].papel = value[0];
+            papeisParaSortear.splice[randomJogador[i]];
           }
         });
       }
