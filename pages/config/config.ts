@@ -57,7 +57,6 @@ export class Configuracao {
       if (!this.jogadores[randomJogador[i]].papel.nome) {
         this.papeisSeparadosPorTimeLevel.forEach((value: number, key: any) => {
           if (papeisParaSortear[randomJogador[i]] == key) {
-            console.log(papeisParaSortear[randomJogador[i]] + key)
             //dentro do key tem a lista de papeis por time/level selecionados na tela anterior
             var x = Math.floor(Math.random() * value - 1 + 1);
             this.jogadores[randomJogador[i]].papel = value[0];

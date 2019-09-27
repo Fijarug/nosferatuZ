@@ -46,6 +46,22 @@ export class JogadoresPage {
     this.jogador.nome = "4";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "5";
+    this.jogador.papel = new Papel;
+    this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "6";
+    this.jogador.papel = new Papel;
+    this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "7";
+    this.jogador.papel = new Papel;
+    this.jogadores.push(this.jogador);
+    this.jogador = new Jogador();
+    this.jogador.nome = "8";
+    this.jogador.papel = new Papel;
+    this.jogadores.push(this.jogador);
   }
 
   public addJogador(): void {
