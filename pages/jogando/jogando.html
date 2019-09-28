@@ -7,5 +7,31 @@
 </ion-header>
 
 <ion-content padding>
+	<ion-card *ngIf="exibirApresentacao == true">
+		<ion-card-header>
+			<ion-card-title>Mestre</ion-card-title>
+		</ion-card-header>
 
+		<ion-card-content>
+			Passe o celular para o mestre do jogo... {{jogadores[0].nome}}
+			<br/>
+				<ion-button ion-button (click)="proximo()">
+					Próximo
+				</ion-button>
+		</ion-card-content>
+	</ion-card>
+
+  <ion-card *ngIf="exibirApresentacao == false">
+		<ion-card-header>
+			<ion-card-title>{{jogador.nome}}</ion-card-title>
+		</ion-card-header>
+
+		<ion-card-content>
+			texto
+			<br/>
+				<ion-button ion-button (click)="proximo()">
+					Próximo
+				</ion-button>
+		</ion-card-content>
+	</ion-card>
 </ion-content>

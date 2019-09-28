@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
+import { Jogando } from "../jogando/jogando";
 
 import { Jogador } from "../../entidades/jogador";
 import { Papel } from "../../entidades/papel";
@@ -241,5 +242,9 @@ export class Configuracao {
         break;
       }
     }
+  }
+
+  public redirecionarJogando(): void {
+    this.navCtrl.push(Jogando, { jogadores: this.jogadores});
   }
 }
