@@ -11,8 +11,8 @@ import { Papel } from "../../entidades/papel";
 export class Jogando {
 
   public jogadores: Array<Jogador> = new Array();
-  public jogadorAtual: Jogador = new Jogador();
-  public ordem: number;
+  public jogadorAtual: Jogador;
+  public ordem: number = 0;
   public exibirApresentacao: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -22,6 +22,7 @@ export class Jogando {
 
   public proximo(){
     this.jogadorAtual = this.jogadores[this.ordem];
+    console.log(this.jogadorAtual)
     this.exibirApresentacao = false;
   }
 
