@@ -31,37 +31,37 @@ export class JogadoresPage {
   public adicionar() {
     this.jogadores = new Array;
     this.jogador = new Jogador();
-    this.jogador.nome = "1";
+    this.jogador.nome = "Jogador 1";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
-    this.jogador.nome = "2";
+    this.jogador.nome = "Jogador 2";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
-    this.jogador.nome = "3";
+    this.jogador.nome = "Jogador 3";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
-    this.jogador.nome = "4";
+    this.jogador.nome = "Jogador 4";
+    this.jogador.papel = new Papel;
+    this.jogadores.push(this.jogador);
+/*    this.jogador = new Jogador();
+    this.jogador.nome = "Jogador 5";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
-    this.jogador.nome = "5";
+    this.jogador.nome = "Jogador 6";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
-    this.jogador.nome = "6";
+    this.jogador.nome = "Jogador 7";
     this.jogador.papel = new Papel;
     this.jogadores.push(this.jogador);
     this.jogador = new Jogador();
-    this.jogador.nome = "7";
+    this.jogador.nome = "Jogador 8";
     this.jogador.papel = new Papel;
-    this.jogadores.push(this.jogador);
-    this.jogador = new Jogador();
-    this.jogador.nome = "8";
-    this.jogador.papel = new Papel;
-    this.jogadores.push(this.jogador);
+    this.jogadores.push(this.jogador);*/
   }
 
   public addJogador(): void {

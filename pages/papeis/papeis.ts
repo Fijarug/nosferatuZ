@@ -51,6 +51,7 @@ export class Papeis {
     this.papel.probabilidade = (0.45 * 100);
     this.papel.level = 2;
     this.papel.habilitado = false;
+    this.papel.transformar = true;
     this.papeis.push(this.papel);
     this.papel = new Papel();
     this.papel.nome = "Vampiro";
@@ -59,6 +60,7 @@ export class Papeis {
     this.papel.probabilidade = (0.45 * 100);
     this.papel.level = 1;
     this.papel.habilitado = false;
+    this.papel.matar = true;
     this.papeis.push(this.papel);
     this.papel = new Papel();
     this.papel.nome = "Colono";
@@ -75,6 +77,7 @@ export class Papeis {
     this.papel.probabilidade = (0.45 * 100);
     this.papel.level = 2;
     this.papel.habilitado = false;
+    this.papel.armadilha = true;
     this.papeis.push(this.papel);
     this.papel = new Papel();
     this.papel.nome = "Vovó do Alho";
@@ -107,6 +110,7 @@ export class Papeis {
     this.papel.probabilidade = (0.45 * 100);
     this.papel.level = 3;
     this.papel.habilitado = false;
+    this.papel.revelar = true;
     this.papeis.push(this.papel);
   }
 

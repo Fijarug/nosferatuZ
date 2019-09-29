@@ -1,3 +1,13 @@
+<style>
+.arredondar ion-card-header {
+  border-radius: 20px 20px 0px 0px;
+}
+
+.arredondar ion-card-content {
+  border-radius: 0px 0px 20px 20px;
+}
+</style>
+
 <ion-header>
 	<ion-navbar hideBackButton color="danger">
 		<ion-title>
@@ -21,7 +31,7 @@
 		</ion-card-content>
 	</ion-card>
 
-  <ion-card *ngIf="exibirApresentacao == false">
+  <ion-card *ngIf="exibirApresentacao == false" class="arredondar">
 		<ion-card-header>
 			<ion-card-title>{{jogadorAtual.nome}}</ion-card-title>
 		</ion-card-header>
