@@ -9,6 +9,7 @@ import { JogadoresPage } from '../jogadores/jogadores';
 export class HomePage {
 
   public logo = "https://github.com/Fijarug/nosferatuZ/blob/master/src/img/logo.png?raw=true";
+  public teste: boolean = false;
 
   constructor(public navCtrl: NavController) {
 
@@ -16,6 +17,10 @@ export class HomePage {
 
   public comecarJogo(): void {
     this.navCtrl.push(JogadoresPage);
+  }
+
+  public tesete(){
+    this.teste= true;
   }
 
 }

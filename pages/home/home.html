@@ -21,4 +21,9 @@
 <img class="logo" src="{{logo}}"/>
 
 <ion-button ion-button (click)="comecarJogo()">Começar</ion-button>
+
+
+<ion-button *ngIf="teste == false" (click)="tesete()" ion-button round style="background-color: #ccc; height: 100px; width: 100px;">TESTE</ion-button>
+<ion-button *ngIf="teste == true" ion-button round style="background-color: #bbb; border: 1px solid #aaa; height: 100px; width: 100px;">TESTE</ion-button>
+
 </ion-content>
