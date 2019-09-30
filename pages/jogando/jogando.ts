@@ -14,6 +14,8 @@ export class Jogando {
   public ordem: number = 0;
   public exibirApresentacao: boolean = true;
   public amanheceu: boolean = false;
+  public exibirPapel: boolean = false;
+  public exibirFuncaoPapel: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get("jogadores");
@@ -21,9 +23,16 @@ export class Jogando {
   }
 
   public proximo() {
-    this.jogadorAtual = this.jogadores[this.ordem];
-    console.log(this.jogadorAtual);
     this.exibirApresentacao = false;
+  }
+
+  public exibirDetalhes() {
+    this.jogadorAtual = this.jogadores[this.ordem];
+    this.exibirPapel = false;
+    this.exibirFuncaoPapel = true;
+  }
+
+  public proximoJogador() {
     this.buscarProximo();
   }
 
@@ -34,5 +43,9 @@ export class Jogando {
     } else {
       this.ordem = this.ordem + 1;
     }
+  }
+
+  public exibirPapelBt() {
+    this.exibirPapel = true;
   }
 }
