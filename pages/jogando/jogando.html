@@ -35,15 +35,18 @@
         Exibir
       </ion-button>
 		</ion-card-content>
-
-    <ion-card-content *ngIf="exibirFuncaoPapel == true">
-			bla bla bla bla bla bla, descrição da função
-      <ion-button ion-button *ngIf="exibirPapel == true" (click)="proximoJogador()">
-        Exibir
-      </ion-button>
-      <ion-item *ngFor="let j of jogadores">
-        {{j.nome}}
-      </ion-item>
-		</ion-card-content>
 	</ion-card>
+
+  <div *ngIf="exibirFuncaoPapel == true">
+    bla bla bla bla bla bla, descrição da função
+    <ion-button ion-button *ngIf="exibirPapel == true" (click)="proximoJogador()">
+      Exibir
+    </ion-button>
+    <ion-item *ngFor="let j of jogadores" style="width:33%!important">
+      <div class="item item-thumbnail-left" style="width: 40px; height: 40px; border-radius: 25px;">
+        <img src="{{j.foto}}">
+        {{j.nome}}
+      </div>
+    </ion-item>
+  </div>
 </ion-content>
