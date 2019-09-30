@@ -17,6 +17,8 @@ export class Jogando {
   public exibirPapel: boolean = false;
   public exibirFuncaoPapel: boolean = false;
 
+  public escolhasDeMorte: Array<Jogador> = new Array();
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get("jogadores");
     this.jogadorAtual = this.jogadores[this.ordem];
@@ -47,5 +49,10 @@ export class Jogando {
 
   public exibirPapelBt() {
     this.exibirPapel = true;
+  }
+
+  public selecionar(j : Jogador){
+    j.selecionado = !j.selecionado;
+    this.escolhasDeMorte.push(j);
   }
 }
