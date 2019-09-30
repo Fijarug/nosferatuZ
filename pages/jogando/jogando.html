@@ -42,11 +42,18 @@
     <ion-button ion-button *ngIf="exibirPapel == true" (click)="proximoJogador()">
       Exibir
     </ion-button>
-    <ion-item *ngFor="let j of jogadores" style="width:33%!important">
-      <div class="item item-thumbnail-left" style="width: 40px; height: 40px; border-radius: 25px;">
-        <img src="{{j.foto}}">
+    <ion-row>
+    <ion-item *ngFor="let j of jogadores" style="width: 33%">
+      <ion-col style="padding: 0px; margin: 0px;">
+      <div class="item item-thumbnail-left" >
+        <img src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px">
+        <br/>
+        <output style="font-size: 10px; padding: 0px; margin: 0px">
         {{j.nome}}
+        </output>
       </div>
+      </ion-col>
     </ion-item>
+    </ion-row>
   </div>
 </ion-content>
