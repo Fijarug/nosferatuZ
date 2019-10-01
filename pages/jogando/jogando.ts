@@ -19,8 +19,11 @@ export class Jogando {
   public exibirFuncaoEscondida: boolean = false;
 
   public escolhasDeMorte: Array<Jogador> = new Array();
+  public relatorioNoite: string = "";
   public revelarJogador: Array<Jogador> = new Array();
   public revelacao: string = "";
+
+  public jogadoresMortos: Array<Jogador> = new Array();
 
   public matar: boolean = false;
   public revelar: boolean = false;
@@ -34,7 +37,7 @@ export class Jogando {
     this.jogadorAtual = this.jogadores[this.ordem];
   }
 
-// depois da apresentação do mestre exibir primeiro jogador/mestre
+  // depois da apresentação do mestre exibir primeiro jogador/mestre
   public comecarJogo() {
     this.exibirApresentacao = false;
     this.exibirFuncaoEscondida = true;
@@ -74,6 +77,15 @@ export class Jogando {
 
     this.jogadores[this.ordem].exibir = false;
     this.jogadorAtual = this.jogadores[this.ordem];
+
+    if (this.amanheceu) {
+      for (var i = 0; i < this.escolhasDeMorte.length; i++) {
+        this.relatorioNoite =+ this.relatorioNoite +
+          "O jogador " + this.escolhasDeMorte[i].nome + " morreu.";
+          this.escolhasDeMorte[i].morto = true;
+          this.jogadoresMortos.push(this.escolhasDeMorte[i]);
+      }
+    }
   }
 
   public resetarAcoes() {
@@ -93,15 +105,15 @@ export class Jogando {
   }
 
   public selecionar(j: Jogador) {
-    if(this.matar){
+    if (this.matar) {
       for (var i = 0; i < this.escolhasDeMorte.length; i++) {
         this.escolhasDeMorte[i].selecionado = false;
       }
       this.escolhasDeMorte = new Array();
       j.selecionado = !j.selecionado;
       this.escolhasDeMorte.push(j);
-    // } else if(this.revelar){
-    } else{
+      // } else if(this.revelar){
+    } else {
       for (var i = 0; i < this.revelarJogador.length; i++) {
         this.revelarJogador[i].selecionado = false;
       }
@@ -118,16 +130,18 @@ export class Jogando {
     this.exibirFuncaoEscondida = true;
   }
 
-  public proximo(){
+  public proximo() {
     this.buscarProximo();
     this.exibirPapel = false;
     this.exibirFuncaoPapel = false;
     this.exibirFuncaoEscondida = true;
   }
 
-  public revelarPapel(){
+  public revelarPapel() {
     this.revelacao = this.revelarJogador[0].papel.nome;
+    this.buscarProximo();
+    this.exibirPapel = false;
+    this.exibirFuncaoPapel = false;
     this.exibirFuncaoEscondida = false;
   }
-
 }
