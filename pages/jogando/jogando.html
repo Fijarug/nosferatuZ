@@ -6,12 +6,12 @@
 	</ion-navbar>
 </ion-header>
 
+<!-- APRESENTAÇÃO E MESTRE -->
 <ion-content padding>
 	<ion-card *ngIf="exibirApresentacao == true">
 		<ion-card-header>
 			<ion-card-title>Mestre</ion-card-title>
 		</ion-card-header>
-
 		<ion-card-content>
 			Passe o celular para o mestre do jogo... {{jogadores[0].nome}}
 			<br/>
@@ -21,7 +21,8 @@
 		</ion-card-content>
 	</ion-card>
 
-	<ion-card *ngIf="exibirApresentacao == false && exibirFuncaoPapel == false" class="arredondar">
+<!-- JOGADOR X E CLICAR PARA EXIBIR FUNÇÃO -->
+	<ion-card *ngIf="exibirFuncaoEscondida == true" class="arredondar">
 		<ion-card-header>
 			<ion-card-title>{{jogadorAtual.nome}}</ion-card-title>
 		</ion-card-header>
@@ -37,14 +38,11 @@
 		</ion-card-content>
 	</ion-card>
 
+<!-- DESCRIÇÃO DA FUNÇÃO -->
   <div *ngIf="exibirFuncaoPapel == true">
     <h2>{{jogadorAtual.papel.nome}}</h2>
-    bla bla bla bla bla bla, descrição da função
-    <ion-button ion-button *ngIf="exibirPapel == true" (click)="proximoJogador()">
-      Exibir
-    </ion-button>
-
-    <ion-row>
+    {{jogadorAtual.papel.descricao}} ... descrição da função
+    <ion-row *ngIf="semAcao == false">
       <ion-item no-lines class="item-checkbox" *ngFor="let j of jogadores" style="width: 33%">
         <ion-col style="padding: 0px; margin: 0px;">
           <div class="item item-thumbnail-left">
@@ -59,10 +57,21 @@
         </ion-col>
       </ion-item>
     </ion-row>
-    <ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="matarVampiro()">
-        Matar
-      </ion-button>
   </div>
+
+  <ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="matarVampiro()">
+    Matar
+  </ion-button>
+
+  <ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="revelarPapel()">
+    Revelar
+  </ion-button>
+
+<br/>
+
+<div *ngIf="revelacao != ''">
+  O jogador {{revelarJogador[0].nome}} é {{revelacao}}
+</div>
 
   <div *ngIf="amanheceu == true">
     AMANHECEU...

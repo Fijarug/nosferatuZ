@@ -16,8 +16,11 @@ export class Jogando {
   public amanheceu: boolean = false;
   public exibirPapel: boolean = false;
   public exibirFuncaoPapel: boolean = false;
+  public exibirFuncaoEscondida: boolean = false;
 
   public escolhasDeMorte: Array<Jogador> = new Array();
+  public revelarJogador: Array<Jogador> = new Array();
+  public revelacao: string = "";
 
   public matar: boolean = false;
   public revelar: boolean = false;
@@ -31,14 +34,16 @@ export class Jogando {
     this.jogadorAtual = this.jogadores[this.ordem];
   }
 
+// depois da apresentação do mestre exibir primeiro jogador/mestre
   public proximo() {
     this.exibirApresentacao = false;
+    this.exibirFuncaoEscondida = true;
   }
 
   public exibirDetalhes() {
-    this.jogadorAtual = this.jogadores[this.ordem];
     this.exibirPapel = false;
     this.exibirFuncaoPapel = true;
+    this.exibirFuncaoEscondida = false;
 
     if (this.jogadorAtual.papel.matar) {
       this.matar = true;
@@ -55,10 +60,6 @@ export class Jogando {
     }
   }
 
-  public proximoJogador() {
-    this.buscarProximo();
-  }
-
   public buscarProximo() {
     if (this.ordem === this.jogadores.length - 1) {
       this.ordem = 0;
@@ -67,6 +68,7 @@ export class Jogando {
       this.ordem = this.ordem + 1;
     }
     this.resetarAcoes();
+    this.jogadorAtual = this.jogadores[this.ordem];
   }
 
   public resetarAcoes() {
@@ -83,17 +85,34 @@ export class Jogando {
   }
 
   public selecionar(j: Jogador) {
-    for (var i = 0; i < this.escolhasDeMorte.length; i++) {
-      this.escolhasDeMorte[i].selecionado = false;
+    if(this.matar){
+      for (var i = 0; i < this.escolhasDeMorte.length; i++) {
+        this.escolhasDeMorte[i].selecionado = false;
+      }
+      this.escolhasDeMorte = new Array();
+      j.selecionado = !j.selecionado;
+      this.escolhasDeMorte.push(j);
+    // } else if(this.revelar){
+    } else{
+      for (var i = 0; i < this.revelarJogador.length; i++) {
+        this.revelarJogador[i].selecionado = false;
+      }
+      this.revelarJogador = new Array();
+      j.selecionado = !j.selecionado;
+      this.revelarJogador.push(j);
     }
-    this.escolhasDeMorte = new Array();
-    j.selecionado = !j.selecionado;
-    this.escolhasDeMorte.push(j);
   }
 
   public matarVampiro() {
     this.buscarProximo();
     this.exibirPapel = false;
     this.exibirFuncaoPapel = false;
+    this.exibirFuncaoEscondida = true;
   }
+
+  public revelarPapel(){
+    this.revelacao = this.revelarJogador[0].papel.nome;
+    this.exibirFuncaoEscondida = false;
+  }
+
 }
