@@ -22,6 +22,7 @@ export class Jogando {
   public relatorioNoite: string = "";
   public revelarJogador: Array<Jogador> = new Array();
   public revelacao: string = "";
+  public revelandoJogador: boolean = false;
 
   public jogadoresMortos: Array<Jogador> = new Array();
 
@@ -135,11 +136,12 @@ export class Jogando {
     this.exibirPapel = false;
     this.exibirFuncaoPapel = false;
     this.exibirFuncaoEscondida = true;
+    this.revelandoJogador = false;
   }
 
   public revelarPapel() {
+    this.revelandoJogador = true;
     this.revelacao = this.revelarJogador[0].papel.nome;
-    this.buscarProximo();
     this.exibirPapel = false;
     this.exibirFuncaoPapel = false;
     this.exibirFuncaoEscondida = false;

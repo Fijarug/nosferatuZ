@@ -74,7 +74,7 @@
   </ion-button>
   <br/>
 
-  <div *ngIf="revelacao != ''">
+  <div *ngIf="revelandoJogador == true">
     O jogador {{revelarJogador[0].nome}} é {{revelacao}}
     <br/>
     <ion-button ion-button (click)="proximo()">
@@ -83,7 +83,9 @@
   </div>
 </div>
 
+
   <div *ngIf="amanheceu == true">
-    AMANHECEU... {{relatorioNoite}}
+    AMANHECEU... <br/>
+    {{relatorioNoite}}
   </div>
 </ion-content>
