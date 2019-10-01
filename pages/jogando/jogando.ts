@@ -35,9 +35,12 @@ export class Jogando {
   }
 
 // depois da apresentação do mestre exibir primeiro jogador/mestre
-  public proximo() {
+  public comecarJogo() {
     this.exibirApresentacao = false;
     this.exibirFuncaoEscondida = true;
+
+    this.resetarAcoes();
+    this.jogadores[this.ordem].exibir = false;
   }
 
   public exibirDetalhes() {
@@ -68,10 +71,15 @@ export class Jogando {
       this.ordem = this.ordem + 1;
     }
     this.resetarAcoes();
+
+    this.jogadores[this.ordem].exibir = false;
     this.jogadorAtual = this.jogadores[this.ordem];
   }
 
   public resetarAcoes() {
+    for (var i = 0; i < this.jogadores.length; i++) {
+      this.jogadores[i].exibir = true;
+    }
     this.matar = false;
     this.revelar = false;
     this.defender = false;
@@ -104,6 +112,13 @@ export class Jogando {
   }
 
   public matarVampiro() {
+    this.buscarProximo();
+    this.exibirPapel = false;
+    this.exibirFuncaoPapel = false;
+    this.exibirFuncaoEscondida = true;
+  }
+
+  public proximo(){
     this.buscarProximo();
     this.exibirPapel = false;
     this.exibirFuncaoPapel = false;

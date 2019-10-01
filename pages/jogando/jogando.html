@@ -15,7 +15,7 @@
 		<ion-card-content>
 			Passe o celular para o mestre do jogo... {{jogadores[0].nome}}
 			<br/>
-				<ion-button ion-button (click)="proximo()">
+				<ion-button ion-button (click)="comecarJogo()">
 					Próximo
 				</ion-button>
 		</ion-card-content>
@@ -44,7 +44,7 @@
     {{jogadorAtual.papel.descricao}} ... descrição da função
     <ion-row *ngIf="semAcao == false">
       <ion-item no-lines class="item-checkbox" *ngFor="let j of jogadores" style="width: 33%">
-        <ion-col style="padding: 0px; margin: 0px;">
+        <ion-col style="padding: 0px; margin: 0px;" *ngIf="j.exibir == true">
           <div class="item item-thumbnail-left">
             <img *ngIf="j.selecionado == true" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px; border: 1px solid black; background-color: SlateGray; position:relative; opacity: 0.60; z-index: 2;">
 
@@ -59,11 +59,15 @@
     </ion-row>
   </div>
 
-  <ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="matarVampiro()">
+  <ion-button ion-button *ngIf="exibirFuncaoPapel == true && semAcao == true" (click)="proximo()">
+    Passar
+  </ion-button>
+
+  <ion-button ion-button *ngIf="exibirFuncaoPapel == true && matar == true" (click)="matarVampiro()">
     Matar
   </ion-button>
 
-  <ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="revelarPapel()">
+  <ion-button ion-button *ngIf="exibirFuncaoPapel == true && revelar == true" (click)="revelarPapel()">
     Revelar
   </ion-button>
 

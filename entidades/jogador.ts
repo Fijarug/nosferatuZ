@@ -9,6 +9,7 @@ export class Jogador {
   public morto: boolean;
   public papel: Papel;
   public selecionado: boolean;
+  public exibir: boolean = true;
 
   constructor() {
 
