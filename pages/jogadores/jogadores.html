@@ -1,9 +1,13 @@
 <style>
+  .full{
+    width: 90%;
+    margin: 5%;
+  }
 	ion-item {
 		width: 300px;
 	}
   .adicionar{
-    style="margin-top: 50px;"
+    margin-top: 50px;
   }
   .barra{
     background-color: #08002a;
@@ -41,7 +45,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-button ion-button (click)="redirecionarPapeis()" *ngIf="habilitar == true">
+  <ion-button ion-button class="full" (click)="redirecionarPapeis()" *ngIf="habilitar == true">
     Configurar Papéis
   </ion-button>
 </ion-content>
