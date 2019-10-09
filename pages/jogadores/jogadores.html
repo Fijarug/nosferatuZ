@@ -2,18 +2,30 @@
 	ion-item {
 		width: 300px;
 	}
+  .adicionar{
+    style="margin-top: 50px;"
+  }
+  .barra{
+    background-color: #08002a;
+    height: 13%;
+    padding: 3px;
+  }
 </style>
 
 <ion-header>
 	<ion-navbar color="danger">
-		<ion-title>NosferatuZ</ion-title>
+		<ion-title>Jogadores</ion-title>
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-	JOGADORES
+<ion-content no-padding>
+  <div class="barra">
+    <p style="color: white">
+      Adicionar os jogadores que irão jogar. Os papéis serão configurados posteriormente.
+    </p>
+   </div>
 	<ion-fab right>
-		<button ion-fab mini (click)="addJogador()">+</button>
+		<button ion-fab mini class="adicionar" (click)="addJogador()">+</button>
  </ion-fab>
  
  <ion-row>
