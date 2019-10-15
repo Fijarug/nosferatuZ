@@ -93,6 +93,9 @@ export class Jogando {
     for (var i = 0; i < this.jogadores.length; i++) {
       this.jogadores[i].exibir = true;
     }
+    for (var i = 0; i < this.revelarJogador.length; i++) {
+      this.revelarJogador[i].selecionado = false;
+    }
     this.matar = false;
     this.revelar = false;
     this.defender = false;
@@ -115,9 +118,6 @@ export class Jogando {
       this.escolhasDeMorte.push(j);
       // } else if(this.revelar){
     } else {
-      for (var i = 0; i < this.revelarJogador.length; i++) {
-        this.revelarJogador[i].selecionado = false;
-      }
       this.revelarJogador = new Array();
       j.selecionado = !j.selecionado;
       this.revelarJogador.push(j);
