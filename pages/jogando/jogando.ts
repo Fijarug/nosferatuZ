@@ -9,11 +9,15 @@ import { Papel } from "../../entidades/papel";
   templateUrl: "jogando.html"
 })
 export class Jogando {
+  public jogadoresLob: Array<Jogador> = new Array();
+
   public jogadores: Array<Jogador> = new Array();
   public jogadorAtual: Jogador;
   public ordem: number = 0;
   public exibirApresentacao: boolean = true;
+  public anoiteceu: boolean = true;
   public amanheceu: boolean = false;
+  public exibirVitimas: boolean = false;
   public exibirPapel: boolean = false;
   public exibirFuncaoPapel: boolean = false;
   public exibirFuncaoEscondida: boolean = false;
@@ -36,12 +40,28 @@ export class Jogando {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.jogadores = navParams.get("jogadores");
     this.jogadorAtual = this.jogadores[this.ordem];
+
+    this.clonarListaJogador(this.jogadoresLob);
+  }
+
+  public clonarListaJogador(lista: Array<Jogador>){
+    for(var i = 0; i < this.jogadores.length; i++){
+      lista[i] = new Jogador;
+      lista[i].nome = this.jogadores[i].nome;
+      lista[i].foto = this.jogadores[i].foto;
+      lista[i].nome = this.jogadores[i].nome;
+      lista[i].morto = this.jogadores[i].morto;
+      lista[i].papel = this.jogadores[i].papel;
+      lista[i].selecionado = this.jogadores[i].selecionado;
+      lista[i].exibir = this.jogadores[i].exibir;
+    }
   }
 
   // depois da apresentação do mestre exibir primeiro jogador/mestre
   public comecarJogo() {
     this.exibirApresentacao = false;
     this.exibirFuncaoEscondida = true;
+    this.anoiteceu = true;
 
     this.resetarAcoes();
     this.jogadores[this.ordem].exibir = false;
@@ -71,6 +91,7 @@ export class Jogando {
     if (this.ordem === this.jogadores.length - 1) {
       this.ordem = 0;
       this.amanheceu = true;
+      this.anoiteceu = false;
     } else {
       this.ordem = this.ordem + 1;
     }
@@ -145,5 +166,10 @@ export class Jogando {
     this.exibirPapel = false;
     this.exibirFuncaoPapel = false;
     this.exibirFuncaoEscondida = false;
+  }
+
+  public revelarVitimas(){
+    this.amanheceu = false;
+    this.exibirVitimas = true;
   }
 }

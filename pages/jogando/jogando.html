@@ -8,7 +8,7 @@
 
 <!-- APRESENTAÇÃO E MESTRE -->
 <ion-content padding>
-	<div *ngIf="amanheceu == false">
+	<div *ngIf="anoiteceu == true">
 		<ion-card *ngIf="exibirApresentacao == true">
 			<ion-card-header>
 				<ion-card-title>Mestre</ion-card-title>
@@ -58,6 +58,21 @@
         </ion-col>
       </ion-item>
     </ion-row>
+    <ion-row>
+      <ion-item no-lines class="item-checkbox" *ngFor="let j of jogadoresLob" style="width: 33%">
+        <ion-col style="padding: 0px; margin: 0px;" *ngIf="j.exibir == true">
+          <div class="item item-thumbnail-left">
+            <img *ngIf="j.selecionado == true" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px; border: 1px solid black; background-color: SlateGray; position:relative; opacity: 0.60; z-index: 2;">
+
+            <img *ngIf="j.selecionado == false" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px">
+            <br/>
+            <output style="font-size: 10px; padding: 0px; margin: 0px">
+            {{j.nome}}
+            </output>
+          </div>
+        </ion-col>
+      </ion-item>
+    </ion-row>
   </div>
 
   <!-- <ion-button ion-button *ngIf="exibirFuncaoPapel == true && semAcao == true" (click)="proximo()"> -->
@@ -86,6 +101,16 @@
 
   <div *ngIf="amanheceu == true">
     AMANHECEU... <br/>
+    entregue o aparelho para o mestre do jogo...
+    <br/>
+    <ion-button ion-button (click)="revelarVitimas()">
+      Passar
+    </ion-button>
+  </div>
+  
+  <div *ngIf="exibirVitimas == true">
+    Vitimas desta noite...
+    <br/>
     {{relatorioNoite}}
   </div>
 </ion-content>
