@@ -57,6 +57,26 @@ export class Jogando {
     }
   }
 
+  public maxTime: any = 30;
+  StartTimer(){
+    var timer;
+    var hidevalue;
+    timer = setTimeout(x => 
+      {
+          if(this.maxTime <= 0) {
+          this.maxTime -= 1;
+          }
+          if(this.maxTime>0){
+            hidevalue = false;
+            this.StartTimer();
+          }
+          else{
+              hidevalue = true;
+          }
+
+      }, 1000);
+  }
+
   // depois da apresentação do mestre exibir primeiro jogador/mestre
   public comecarJogo() {
     this.exibirApresentacao = false;
@@ -171,5 +191,6 @@ export class Jogando {
   public revelarVitimas(){
     this.amanheceu = false;
     this.exibirVitimas = true;
+    this.StartTimer();
   }
 }
