@@ -98,19 +98,24 @@
   </div>
 </div>
 
+<!-- AMANHECEU -->
+<div *ngIf="amanheceu == true">
+  AMANHECEU... <br/>
+  entregue o aparelho para o mestre do jogo...
+  <br/>
+  <ion-button ion-button (click)="revelarVitimas()">
+    Passar
+  </ion-button>
+</div>
 
-  <div *ngIf="amanheceu == true">
-    AMANHECEU... <br/>
-    entregue o aparelho para o mestre do jogo...
-    <br/>
-    <ion-button ion-button (click)="revelarVitimas()">
-      Passar
-    </ion-button>
-  </div>
-  
-  <div *ngIf="exibirVitimas == true">
-    Vitimas desta noite...
-    <br/>
-    {{relatorioNoite}}
-  </div>
+<!-- RELATORIO QUEM -->
+<div *ngIf="exibirVitimas == true">
+  Vitimas desta noite...
+  <br/>
+  {{relatorioNoite}}
+  <br/>
+  <ion-button ion-button (click)="revelarVitimas()">
+    Discussão
+  </ion-button>
+</div>
 </ion-content>
