@@ -46,7 +46,7 @@ export class Jogando {
 
   public centesimas: number = 0;
   public minutos: number = 2;
-  public segundos: number = 60;
+  public segundos: number = 0;
   public contador: any;
 
   public _centesimas: string = '';
@@ -69,13 +69,13 @@ export class Jogando {
         } else {
           this._segundos = this.segundos + '';
         }
-        if (this.segundos == 60) {
-          this.segundos = 0;
+        if (this.segundos < 0) {
+          this.segundos = 59;
           this.minutos -= 1;
           if (this.minutos < 10) this._minutos = '0' + this.minutos;
           else this._minutos = this.minutos + '';
           this._segundos = '00';
-          if (this.minutos == 90) {
+          if (this.minutos == 0) {
             this.pause();
           }
         }
