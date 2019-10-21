@@ -99,9 +99,11 @@
   <br/>
   {{relatorioNoite}}
   <br/>
-  {{ maxTime }}
-  <ion-button ion-button (click)="revelarVitimas()">
+
+  <ion-button ion-button (click)="start()">
     Discussão
   </ion-button>
+
+  <p>{{_minutos}}:{{_segundos}}</p>
 </div>
 </ion-content>

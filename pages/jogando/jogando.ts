@@ -44,6 +44,49 @@ export class Jogando {
     this.clonarListaJogador(this.jogadoresLob);
   }
 
+  public centesimas: number = 0;
+  public minutos: number = 2;
+  public segundos: number = 60;
+  public contador: any;
+
+  public _centesimas: string = '';
+  public _minutos: string = '2';
+  public _segundos: string = '00';
+
+  start() {
+    this.contador = setInterval(() => {
+      this.centesimas += 1;
+      if (this.centesimas < 10) {
+        this._centesimas = '0' + this.centesimas;
+      }else {
+        this._centesimas = '' + this.centesimas;
+      } 
+      if (this.centesimas == 10) {
+        this.centesimas = 0;
+        this.segundos -= 1;
+        if (this.segundos < 10) {
+          this._segundos = '0' + this.segundos;
+        } else {
+          this._segundos = this.segundos + '';
+        }
+        if (this.segundos == 60) {
+          this.segundos = 0;
+          this.minutos -= 1;
+          if (this.minutos < 10) this._minutos = '0' + this.minutos;
+          else this._minutos = this.minutos + '';
+          this._segundos = '00';
+          if (this.minutos == 90) {
+            this.pause();
+          }
+        }
+      }
+    }, 100)
+  }
+
+  pause() {
+    clearInterval(this.contador);
+  }
+
   public clonarListaJogador(lista: Array<Jogador>){
     for(var i = 0; i < this.jogadores.length; i++){
       lista[i] = new Jogador;
