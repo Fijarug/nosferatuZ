@@ -74,7 +74,7 @@ export class Jogando {
           this.minutos -= 1;
           if (this.minutos < 10) this._minutos = '0' + this.minutos;
           else this._minutos = this.minutos + '';
-          this._segundos = '00';
+          this._segundos = '59';
           if (this.minutos == 0) {
             this.pause();
           }
