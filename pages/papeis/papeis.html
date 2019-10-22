@@ -40,18 +40,17 @@
 <!-- 3 cards por linha
 foto, nome, habilitgado -->
 	<ion-row>
+
 		<ion-item *ngFor="let p of papeis" style="width:33%;" no-lines>
 			<ion-col style="padding: 0px; margin: 0px;">
 				<ion-card>
-          <div class="teste">
-            <div class="card-title">
-              {{p.nome}} <br/>
-              <input type="checkbox" (click)="addPapel(p)">
+          <div class="card-title">
+            {{p.nome}} <br/>
+            <input type="checkbox" (click)="addPapel(p)">
 
-              <br/>
-              {{p.time}}<br/>
-              Lvl: {{p.level}}
-            </div>
+            <br/>
+            {{p.time}}<br/>
+            Lvl: {{p.level}}
           </div>
         </ion-card>
 			</ion-col>
