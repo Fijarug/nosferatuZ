@@ -6,6 +6,8 @@
 		text-align: center;
 		padding: 0px;
 		margin: 0px;
+    margin-right: 3%;
+    box-shadow: 3px 4px 15px 2px rgba(0,0,0,0.55);
 	}
 </style>
 
@@ -28,16 +30,12 @@
 <!-- 3 cards por linha
 foto, nome, habilitgado -->
 	<ion-row>
-		<ion-item *ngFor="let p of papeis" style="width:33%;">
+		<ion-item *ngFor="let p of papeis" style="width:33%;" no-lines>
 			<ion-col style="padding: 0px; margin: 0px;">
 				<ion-card>
 					<div class="card-title">
 						{{p.nome}} <br/>
-							<input type="checkbox" (click)="addPapel(p)">
-
-            <ion-item>
-             <ion-radio  value="1"></ion-radio>
-            </ion-item>
+            <input type="checkbox" (click)="addPapel(p)">
 
             <br/>
             {{p.time}}<br/>
