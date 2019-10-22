@@ -9,6 +9,16 @@
     margin-right: 3%;
     box-shadow: 3px 4px 15px 2px rgba(0,0,0,0.55);
 	}
+  .teste{
+    width: 100%;
+		height: 90px;
+		position: relative;
+		text-align: center;
+		padding: 0px;
+		margin: 0px;
+    margin-right: 3%;
+    box-shadow: 3px 4px 15px 2px rgba(0,0,0,0.55);
+  }
 </style>
 
 <ion-header>
@@ -33,13 +43,15 @@ foto, nome, habilitgado -->
 		<ion-item *ngFor="let p of papeis" style="width:33%;" no-lines>
 			<ion-col style="padding: 0px; margin: 0px;">
 				<ion-card>
-					<div class="card-title">
-						{{p.nome}} <br/>
-            <input type="checkbox" (click)="addPapel(p)">
+          <div class="teste">
+            <div class="card-title">
+              {{p.nome}} <br/>
+              <input type="checkbox" (click)="addPapel(p)">
 
-            <br/>
-            {{p.time}}<br/>
-            Lvl: {{p.level}}
+              <br/>
+              {{p.time}}<br/>
+              Lvl: {{p.level}}
+            </div>
           </div>
         </ion-card>
 			</ion-col>
