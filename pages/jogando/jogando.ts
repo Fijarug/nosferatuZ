@@ -189,7 +189,8 @@ export class Jogando {
   }
 
   public exibirPapelBt() {
-    this.exibirPapel = true;
+    this.exibirPapel = !this.exibirPapel;
+    console.log("oi")
   }
 
   public selecionar(j: Jogador) {
