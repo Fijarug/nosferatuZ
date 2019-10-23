@@ -32,11 +32,16 @@
 		<!-- JOGADOR X E CLICAR PARA EXIBIR FUNÇÃO -->
 		<ion-card *ngIf="exibirFuncaoEscondida == true" class="arredondar">
 			<ion-card-header>
-				<ion-card-title>{{jogadorAtual.nome}}</ion-card-title>
+				<ion-card-title>
+          {{jogadorAtual.nome}}
+          <div style="border: 1px solid black; border-radius: 50px; height: 100px; width: 100px;">
+            .
+          </div>
+        </ion-card-title>
 			</ion-card-header>
 
 			<ion-card-content *ngIf="exibirFuncaoPapel == false">
-				texto
+				Selecione o perfil quando estiver pronto.
 				<br/>
 					<input type="checkbox" (click)="exibirPapelBt()">
       <br/>
