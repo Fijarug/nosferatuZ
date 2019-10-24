@@ -128,4 +128,28 @@
     {{_minutos}}:{{_segundos}}
   </p>
 </div>
+
+<div *ngIf="exibirDiscussao == true">
+  <p class="tempo">
+    {{_minutos}}:{{_segundos}}
+  </p>
+  <ion-button ion-button (click)="start()">
+    Finalizar Discussão
+  </ion-button>
+</div>
+
+<div *ngIf="exibirVitimas == true">
+  Vitimas desta noite...
+  <br/>
+  {{relatorioNoite}}
+  <br/>
+
+  <ion-button ion-button (click)="start()">
+    Discussão
+  </ion-button>
+
+  <p class="tempo">
+    {{_minutos}}:{{_segundos}}
+  </p>
+</div>
 </ion-content>
