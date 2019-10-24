@@ -21,6 +21,8 @@ export class Jogando {
   public exibirPapel: boolean = false;
   public exibirFuncaoPapel: boolean = false;
   public exibirFuncaoEscondida: boolean = false;
+  public exibirDiscussao: boolean = false;
+  public exibirVotacao: boolean = false;
 
   public escolhasDeMorte: Array<Jogador> = new Array();
   public relatorioNoite: string = "";
@@ -54,6 +56,8 @@ export class Jogando {
   public _segundos: string = '00';
 
   start() {
+    this.exibirVitimas = false;
+    this.exibirDiscussao = true;
     this.contador = setInterval(() => {
       this.centesimas += 1;
       if (this.centesimas < 10) {
@@ -77,6 +81,7 @@ export class Jogando {
           this._segundos = '59';
           if (this.minutos == 0) {
             this.pause();
+            this.revelarVotacao();
           }
         }
       }
@@ -236,5 +241,15 @@ export class Jogando {
     this.amanheceu = false;
     this.exibirVitimas = true;
     this.StartTimer();
+  }
+
+  public revelarDiscussao(){
+    this.exibirVitimas = false;
+    this.exibirDiscussao = true;
+  }
+
+  public revelarVotacao(){
+    this.exibirDiscussao = false;
+    this.exibirVotacao = true;
   }
 }
