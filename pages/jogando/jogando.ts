@@ -51,9 +51,9 @@ export class Jogando {
   public segundos: number = 0;
   public contador: any;
 
-  public _centesimas: string = '';
-  public _minutos: string = '2';
-  public _segundos: string = '00';
+  public _centesimas: string = "";
+  public _minutos: string = "2";
+  public _segundos: string = "00";
 
   start() {
     this.exibirVitimas = false;
@@ -61,40 +61,40 @@ export class Jogando {
     this.contador = setInterval(() => {
       this.centesimas += 1;
       if (this.centesimas < 10) {
-        this._centesimas = '0' + this.centesimas;
-      }else {
-        this._centesimas = '' + this.centesimas;
-      } 
+        this._centesimas = "0" + this.centesimas;
+      } else {
+        this._centesimas = "" + this.centesimas;
+      }
       if (this.centesimas == 10) {
         this.centesimas = 0;
         this.segundos -= 1;
         if (this.segundos < 10) {
-          this._segundos = '0' + this.segundos;
+          this._segundos = "0" + this.segundos;
         } else {
-          this._segundos = this.segundos + '';
+          this._segundos = this.segundos + "";
         }
         if (this.segundos < 0) {
           this.segundos = 59;
           this.minutos -= 1;
-          if (this.minutos < 10) this._minutos = '0' + this.minutos;
-          else this._minutos = this.minutos + '';
-          this._segundos = '59';
+          if (this.minutos < 10) this._minutos = "0" + this.minutos;
+          else this._minutos = this.minutos + "";
+          this._segundos = "59";
           if (this.minutos == 0) {
             this.pause();
             this.revelarVotacao();
           }
         }
       }
-    }, 100)
+    }, 100);
   }
 
   pause() {
     clearInterval(this.contador);
   }
 
-  public clonarListaJogador(lista: Array<Jogador>){
-    for(var i = 0; i < this.jogadores.length; i++){
-      lista[i] = new Jogador;
+  public clonarListaJogador(lista: Array<Jogador>) {
+    for (var i = 0; i < this.jogadores.length; i++) {
+      lista[i] = new Jogador();
       lista[i].nome = this.jogadores[i].nome;
       lista[i].foto = this.jogadores[i].foto;
       lista[i].nome = this.jogadores[i].nome;
@@ -106,23 +106,20 @@ export class Jogando {
   }
 
   public maxTime: any = 30;
-  StartTimer(){
+  StartTimer() {
     var timer;
     var hidevalue;
-    timer = setTimeout(x => 
-      {
-          if(this.maxTime <= 0) {
-          this.maxTime -= 1;
-          }
-          if(this.maxTime>0){
-            hidevalue = false;
-            this.StartTimer();
-          }
-          else{
-              hidevalue = true;
-          }
-
-      }, 1000);
+    timer = setTimeout(x => {
+      if (this.maxTime <= 0) {
+        this.maxTime -= 1;
+      }
+      if (this.maxTime > 0) {
+        hidevalue = false;
+        this.StartTimer();
+      } else {
+        hidevalue = true;
+      }
+    }, 1000);
   }
 
   // depois da apresentação do mestre exibir primeiro jogador/mestre
@@ -170,10 +167,13 @@ export class Jogando {
 
     if (this.amanheceu) {
       for (var i = 0; i < this.escolhasDeMorte.length; i++) {
-        this.relatorioNoite =+ this.relatorioNoite +
-          "O jogador " + this.escolhasDeMorte[i].nome + " morreu.";
-          this.escolhasDeMorte[i].morto = true;
-          this.jogadoresMortos.push(this.escolhasDeMorte[i]);
+        this.relatorioNoite =
+          +this.relatorioNoite +
+          "O jogador " +
+          this.escolhasDeMorte[i].nome +
+          " morreu.";
+        this.escolhasDeMorte[i].morto = true;
+        this.jogadoresMortos.push(this.escolhasDeMorte[i]);
       }
     }
   }
@@ -195,7 +195,7 @@ export class Jogando {
 
   public exibirPapelBt() {
     this.exibirPapel = !this.exibirPapel;
-    console.log("oi")
+    console.log("oi");
   }
 
   public selecionar(j: Jogador) {
@@ -237,18 +237,18 @@ export class Jogando {
     this.exibirFuncaoEscondida = false;
   }
 
-  public revelarVitimas(){
+  public revelarVitimas() {
     this.amanheceu = false;
     this.exibirVitimas = true;
     this.StartTimer();
   }
 
-  public revelarDiscussao(){
+  public revelarDiscussao() {
     this.exibirVitimas = false;
     this.exibirDiscussao = true;
   }
 
-  public revelarVotacao(){
+  public revelarVotacao() {
     this.exibirDiscussao = false;
     this.exibirVotacao = true;
   }

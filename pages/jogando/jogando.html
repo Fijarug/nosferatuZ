@@ -1,15 +1,19 @@
 <style>
-.tempo{
-    font-size: 50px;
-    font-family: monospace;
-}
-.jogador{
-  border: 1px solid #000;
-  border-radius: 50px; height: 100px; width: 100px;
-}
-.jogador.selecionado{
-  box-shadow: 3px 4px 15px 2px rgba(0,0,0,0.55);
-}
+	.tempo {
+		font-size: 50px;
+		font-family: monospace;
+	}
+
+	.jogador {
+		border: 1px solid #000;
+		border-radius: 50px;
+		height: 100px;
+		width: 100px;
+	}
+
+	.jogador.selecionado {
+		box-shadow: 3px 4px 15px 2px rgba(0, 0, 0, 0.55);
+	}
 </style>
 
 <ion-header>
@@ -30,9 +34,9 @@
 			<ion-card-content>
 				Passe o celular para o mestre do jogo... {{jogadores[0].nome}}
 				<br/>
-					<ion-button ion-button (click)="comecarJogo()">
-						Próximo
-					</ion-button>
+				<ion-button ion-button (click)="comecarJogo()">
+					Próximo
+				</ion-button>
 			</ion-card-content>
 		</ion-card>
 
@@ -40,101 +44,113 @@
 		<ion-card *ngIf="exibirFuncaoEscondida == true" class="arredondar">
 			<ion-card-header>
 				<ion-card-title>
-          {{jogadorAtual.nome}}
-          <div *ngIf="exibirPapel == false" (click)="exibirPapelBt()" class="jogador">
-            
-          </div>
-          <div *ngIf="exibirPapel == true" (click)="exibirPapelBt()" class="jogador selecionado">
-            
-          </div>
-        </ion-card-title>
+					{{jogadorAtual.nome}}
+					<div *ngIf="exibirPapel == false" (click)="exibirPapelBt()" class="jogador">
+
+					</div>
+					<div *ngIf="exibirPapel == true" (click)="exibirPapelBt()" class="jogador selecionado">
+
+					</div>
+				</ion-card-title>
 			</ion-card-header>
 
 			<ion-card-content *ngIf="exibirFuncaoPapel == false">
 				Selecione o perfil quando estiver pronto.
-      <br/>
-      <ion-button ion-button *ngIf="exibirPapel == true" (click)="exibirDetalhes()">
-        Exibir
-      </ion-button>
-		</ion-card-content>
-	</ion-card>
+				<br/>
+				<ion-button ion-button *ngIf="exibirPapel == true" (click)="exibirDetalhes()">
+					Exibir
+				</ion-button>
+			</ion-card-content>
+		</ion-card>
 
-<!-- DESCRIÇÃO DA FUNÇÃO -->
-  <div *ngIf="exibirFuncaoPapel == true">
-    <h2>{{jogadorAtual.papel.nome}}</h2>
-    {{jogadorAtual.papel.descricao}} ... descrição da função
-    <ion-row *ngIf="semAcao == false">
+		<!-- DESCRIÇÃO DA FUNÇÃO -->
+		<div *ngIf="exibirFuncaoPapel == true">
+			<h2>{{jogadorAtual.papel.nome}}</h2>
+			{{jogadorAtual.papel.descricao}} ... descrição da função
+			<ion-row *ngIf="semAcao == false">
+				<ion-item no-lines class="item-checkbox" *ngFor="let j of jogadores" style="width: 33%">
+					<ion-col style="padding: 0px; margin: 0px;" *ngIf="j.exibir == true">
+						<div class="item item-thumbnail-left">
+							<img *ngIf="j.selecionado == true" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px; border: 1px solid black; background-color: SlateGray; position:relative; opacity: 0.60; z-index: 2;">
+
+							<img *ngIf="j.selecionado == false" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px">
+							<br/>
+							<output style="font-size: 10px; padding: 0px; margin: 0px">
+								{{j.nome}}
+							</output>
+						</div>
+					</ion-col>
+				</ion-item>
+			</ion-row>
+		</div>
+
+		<!-- <ion-button ion-button *ngIf="exibirFuncaoPapel == true && semAcao == true" (click)="proximo()"> -->
+		<ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="proximo()">
+			Passar
+		</ion-button>
+
+		<ion-button ion-button *ngIf="exibirFuncaoPapel == true && matar == true" (click)="matarVampiro()">
+			Matar
+		</ion-button>
+
+		<ion-button ion-button *ngIf="exibirFuncaoPapel == true && revelar == true" (click)="revelarPapel()">
+			Revelar
+		</ion-button>
+		<br/>
+
+		<div *ngIf="revelandoJogador == true">
+			O jogador {{revelarJogador[0].nome}} é {{revelacao}}
+			<br/>
+			<ion-button ion-button (click)="proximo()">
+				Passar
+			</ion-button>
+		</div>
+	</div>
+
+	<!-- AMANHECEU -->
+	<div *ngIf="amanheceu == true">
+		AMANHECEU... <br/>
+  entregue o aparelho para o mestre do jogo...
+		<br/>
+		<ion-button ion-button (click)="revelarVitimas()">
+			Passar
+		</ion-button>
+	</div>
+
+	<!-- RELATORIO QUEM -->
+	<div *ngIf="exibirVitimas == true">
+		Vitimas desta noite...
+		<br/>
+  {{relatorioNoite}}
+		<br/>
+
+		<ion-button ion-button (click)="start()">
+			Discussão
+		</ion-button>
+	</div>
+
+	<div *ngIf="exibirDiscussao == true">
+		<p class="tempo">
+			{{_minutos}}:{{_segundos}}
+		</p>
+		<ion-button ion-button (click)="revelarVotacao()">
+			Finalizar Discussão
+		</ion-button>
+	</div>
+
+	<div *ngIf="exibirVotacao == true">
+    <ion-row>
       <ion-item no-lines class="item-checkbox" *ngFor="let j of jogadores" style="width: 33%">
         <ion-col style="padding: 0px; margin: 0px;" *ngIf="j.exibir == true">
           <div class="item item-thumbnail-left">
-            <img *ngIf="j.selecionado == true" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px; border: 1px solid black; background-color: SlateGray; position:relative; opacity: 0.60; z-index: 2;">
-
-            <img *ngIf="j.selecionado == false" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px">
+            <img *ngIf="j.morto == false" (click)="selecionar(j)" src="{{j.foto}}" style="width: 40px; height: 40px; border-radius: 25px; padding: 0px; margin: 0px">
             <br/>
             <output style="font-size: 10px; padding: 0px; margin: 0px">
-            {{j.nome}}
+              {{j.nome}}
             </output>
           </div>
         </ion-col>
       </ion-item>
     </ion-row>
-  </div>
-
-  <!-- <ion-button ion-button *ngIf="exibirFuncaoPapel == true && semAcao == true" (click)="proximo()"> -->
-  <ion-button ion-button *ngIf="exibirFuncaoPapel == true" (click)="proximo()">
-    Passar
-  </ion-button>
-
-  <ion-button ion-button *ngIf="exibirFuncaoPapel == true && matar == true" (click)="matarVampiro()">
-    Matar
-  </ion-button>
-
-  <ion-button ion-button *ngIf="exibirFuncaoPapel == true && revelar == true" (click)="revelarPapel()">
-    Revelar
-  </ion-button>
-  <br/>
-
-  <div *ngIf="revelandoJogador == true">
-    O jogador {{revelarJogador[0].nome}} é {{revelacao}}
-    <br/>
-    <ion-button ion-button (click)="proximo()">
-      Passar
-    </ion-button>
-  </div>
-</div>
-
-<!-- AMANHECEU -->
-<div *ngIf="amanheceu == true">
-  AMANHECEU... <br/>
-  entregue o aparelho para o mestre do jogo...
-  <br/>
-  <ion-button ion-button (click)="revelarVitimas()">
-    Passar
-  </ion-button>
-</div>
-
-<!-- RELATORIO QUEM -->
-<div *ngIf="exibirVitimas == true">
-  Vitimas desta noite...
-  <br/>
-  {{relatorioNoite}}
-  <br/>
-
-  <ion-button ion-button (click)="start()">
-    Discussão
-  </ion-button>
-</div>
-
-<div *ngIf="exibirDiscussao == true">
-  <p class="tempo">
-    {{_minutos}}:{{_segundos}}
-  </p>
-  <ion-button ion-button (click)="revelarVotacao()">
-    Finalizar Discussão
-  </ion-button>
-</div>
-
-<div *ngIf="exibirVotacao == true">
-  Votação
-</div>
+	</div>
 </ion-content>
