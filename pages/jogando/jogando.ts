@@ -9,6 +9,9 @@ import { Papel } from "../../entidades/papel";
   templateUrl: "jogando.html"
 })
 export class Jogando {
+  //lista para votação
+  public jogadoresEnforcar: Array<Jogador> = new Array();
+
   public jogadoresLob: Array<Jogador> = new Array();
 
   public jogadores: Array<Jogador> = new Array();
@@ -43,7 +46,7 @@ export class Jogando {
     this.jogadores = navParams.get("jogadores");
     this.jogadorAtual = this.jogadores[this.ordem];
 
-    this.clonarListaJogador(this.jogadoresLob);
+    this.clonarListaJogador(this.jogadoresEnforcar);
   }
 
   public centesimas: number = 0;
@@ -195,7 +198,6 @@ export class Jogando {
 
   public exibirPapelBt() {
     this.exibirPapel = !this.exibirPapel;
-    console.log("oi");
   }
 
   public selecionar(j: Jogador) {
@@ -206,7 +208,11 @@ export class Jogando {
       this.escolhasDeMorte = new Array();
       j.selecionado = !j.selecionado;
       this.escolhasDeMorte.push(j);
-      // } else if(this.revelar){
+    } else if(this.exibirVotacao){
+      for (var i = 0; i < this.jogadoresEnforcar.length; i++) {
+        this.jogadoresEnforcar[i].selecionado = false;
+      }
+      j.selecionado = !j.selecionado;
     } else {
       this.revelarJogador = new Array();
       j.selecionado = !j.selecionado;
@@ -251,5 +257,10 @@ export class Jogando {
   public revelarVotacao() {
     this.exibirDiscussao = false;
     this.exibirVotacao = true;
+  }
+
+  public votar(j: Jogador){
+    this.jogadoresEnforcar.push(j);
+    this.buscarProximo();
   }
 }
