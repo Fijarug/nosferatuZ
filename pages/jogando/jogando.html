@@ -148,8 +148,9 @@
 		</ion-button>
 	</div>
 
+  <!-- VOTAÇÃO -->
 	<div *ngIf="exibirVotacao == true">
-    <h2>{{jogadorAtual.papel.nome}}</h2>
+    <h2>{{jogadorAtual.nome}}</h2>
     <ion-row>
       <ion-item no-lines class="item-checkbox" *ngFor="let j of jogadores" style="width: 33%">
         <ion-col style="padding: 0px; margin: 0px;" *ngIf="j.exibir == true">
